@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:13
+    container_name: postgres_server
+    restart: always
+    environment:
+      - DATABASE_PORT=5432
+      - DATABASE_DIALECT=postgresql
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432/tcp"
+    volumes:
+      - psql_db:/var/lib/postgresql/data
+
+volumes:
+  psql_db:
+    external: false
